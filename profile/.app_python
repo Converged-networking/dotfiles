@@ -1,0 +1,11 @@
+# Pyenv settings
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+# Poetry settings
+export PATH="$HOME/.poetry/bin:$PATH"
+
+# Create python virtual env in same dir
+export PIPENV_VENV_IN_PROJECT=1
