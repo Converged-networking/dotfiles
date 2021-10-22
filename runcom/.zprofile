@@ -16,7 +16,7 @@ fi
 # Make utilities available
 PATH="$DOTFILES_DIR/bin:$PATH"
 
-for DOTFILE in "$DOTFILES_DIR"/profile/.{function,env,alias,app_*}; do
+for DOTFILE in "$DOTFILES_DIR"/profile/.{function,env,alias,app_*,custom}; do
   [ -f "$DOTFILE" ] && . "$DOTFILE"
 done
 
