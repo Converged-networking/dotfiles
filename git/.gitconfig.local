@@ -1,0 +1,3 @@
+[include]
+    # Assuming dotfiles are installed in ~/.dotfiles
+    path = ~/.dotfiles/git/.gitconfig.prive

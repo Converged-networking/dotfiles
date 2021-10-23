@@ -23,3 +23,18 @@ fi
 # Install links
 ln -fs ${DOTFILES_DIR}/runcom/.zprofile ${HOME}/.zprofile
 ln -fs ${HOME}/.zprofile ${HOME}/.zshrc
+ln -fs ${DOTFILES_DIR}/git/.gitconfig ${HOME}/.gitconfig
+
+rm ~/.gitconfig.local
+cat >~/.gitconfig.local  <<EOL
+[include]
+    # Assuming dotfiles are installed in ~/.dotfiles
+    path = ~/.dotfiles/git/.gitconfig.prive
+EOL
+
+if test -f "/etc/wsl.conf"; then
+  cat >>~/.gitconfig.local  <<EOL
+    # Include config for WSL
+    path = ~/.dotfiles/git/.gitconfig.wsl
+EOL
+fi
