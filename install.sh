@@ -12,12 +12,8 @@ fi
 # Installing dotfiles
 ###
 
-# Resolve DOTFILES_DIR (assuming ~/.dotfiles on distros without readlink)
-READLINK=$(which greadlink &>/dev/null || which readlink)
-if [[ -x "$READLINK" ]]; then
-  SCRIPT_PATH=$($READLINK -f "${HOME}/.zprofile")
-  DOTFILES_DIR=$(dirname "$(dirname "$SCRIPT_PATH")")
-elif [ -d "$HOME/.dotfiles" ]; then
+# Assuming ~/.dotfiles
+if [ -d "$HOME/.dotfiles" ]; then
   DOTFILES_DIR="$HOME/.dotfiles"
 else
   echo "Unable to find dotfiles, exiting."
