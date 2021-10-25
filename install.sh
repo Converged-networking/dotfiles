@@ -22,7 +22,7 @@ fi
 
 # Install links
 ln -fs ${DOTFILES_DIR}/runcom/.zprofile ${HOME}/.zprofile
-ln -fs ${HOME}/.zprofile ${HOME}/.zshrc
+ln -fs ${DOTFILES_DIR}/runcom/.zshrc ${HOME}/.zshrc
 ln -fs ${DOTFILES_DIR}/git/.gitconfig ${HOME}/.gitconfig
 
 rm ~/.gitconfig.local 2>/dev/null
