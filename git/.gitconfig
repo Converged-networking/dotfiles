@@ -1,3 +1,5 @@
+[push]
+        default = simple
 [core]
   editor = code --wait
 [diff]
