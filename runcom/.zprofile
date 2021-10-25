@@ -44,3 +44,7 @@ unset READLINK CURRENT_SCRIPT SCRIPT_PATH DOTFILE EXTRAFILE
 
 # Export
 export DOTFILES_DIR DOTFILES_EXTRA_DIR
+
+# Update dotfiles on new shell
+(cd ~/.dotfiles && git pull)
+
