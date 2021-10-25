@@ -26,6 +26,11 @@ done
 #   done
 # fi
 
+# Special for netjump
+if [ "$HOST" = "v-netjump001.directory.intra" ]; then
+  . "${DOTFILES_DIR}/profile/.special_netjump"
+fi
+
 # Hook for extra/custom stuff
 DOTFILES_EXTRA_DIR="$HOME/.extra"
 if [ -d "$DOTFILES_EXTRA_DIR" ]; then
