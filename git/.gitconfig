@@ -1,5 +1,7 @@
+[pull]
+	rebase = false
 [push]
-        default = simple
+  default = current
 [core]
   editor = code --wait
 [diff]
