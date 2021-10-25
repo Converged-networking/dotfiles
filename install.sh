@@ -13,8 +13,8 @@ fi
 ###
 
 # Assuming ~/.dotfiles
-if [ -d "$HOME/.dotfiles" ]; then
-  DOTFILES_DIR="$HOME/.dotfiles"
+if [ -d "${HOME}/.dotfiles" ]; then
+  DOTFILES_DIR="${HOME}/.dotfiles"
 else
   echo "Unable to find dotfiles, exiting."
   return
@@ -25,16 +25,19 @@ ln -fs ${DOTFILES_DIR}/runcom/.zprofile ${HOME}/.zprofile
 ln -fs ${DOTFILES_DIR}/runcom/.zshrc ${HOME}/.zshrc
 ln -fs ${DOTFILES_DIR}/git/.gitconfig ${HOME}/.gitconfig
 
-rm ~/.gitconfig.local 2>/dev/null
-cat >~/.gitconfig.local  <<EOL
+# Create initial local config if it does not exist yet
+if [ ! -f ${HOME}/.gitconfig.local ]; then
+  rm ~/.gitconfig.local 2>/dev/null
+  cat >~/.gitconfig.local  <<EOL
 [include]
-    # Assuming dotfiles are installed in ~/.dotfiles
-    path = ~/.dotfiles/git/.gitconfig.prive
+  # Assuming dotfiles are installed in ~/.dotfiles
+  path = ~/.dotfiles/git/.gitconfig.prive
 EOL
 
-if test -f "/etc/wsl.conf"; then
-  cat >>~/.gitconfig.local  <<EOL
-    # Include config for WSL
-    path = ~/.dotfiles/git/.gitconfig.wsl
+  if test -f "/etc/wsl.conf"; then
+    cat >>~/.gitconfig.local  <<EOL
+  # Include config for WSL
+  path = ~/.dotfiles/git/.gitconfig.wsl
 EOL
+  fi
 fi
