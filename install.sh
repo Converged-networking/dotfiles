@@ -25,7 +25,7 @@ ln -fs ${DOTFILES_DIR}/runcom/.zprofile ${HOME}/.zprofile
 ln -fs ${HOME}/.zprofile ${HOME}/.zshrc
 ln -fs ${DOTFILES_DIR}/git/.gitconfig ${HOME}/.gitconfig
 
-rm ~/.gitconfig.local
+rm ~/.gitconfig.local 2>/dev/null
 cat >~/.gitconfig.local  <<EOL
 [include]
     # Assuming dotfiles are installed in ~/.dotfiles
