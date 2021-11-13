@@ -27,10 +27,8 @@ ln -fs ${DOTFILES_DIR}/git/.gitconfig ${HOME}/.gitconfig
 
 # Create initial local config if it does not exist yet
 if [ ! -f ${HOME}/.gitconfig.local ]; then
-  rm ~/.gitconfig.local 2>/dev/null
   cat >~/.gitconfig.local  <<EOL
 [include]
-  # Assuming dotfiles are installed in ~/.dotfiles
   path = ~/.dotfiles/git/.gitconfig.prive
 EOL
 
@@ -40,4 +38,12 @@ EOL
   path = ~/.dotfiles/git/.gitconfig.wsl
 EOL
   fi
+
+  if is-macos; then
+    cat >>~/.gitconfig.local  <<EOL
+  # Include config for MacOS
+  path = ~/.dotfiles/git/.gitconfig.macos
+EOL
+  fi
+
 fi
