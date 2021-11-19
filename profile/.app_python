@@ -7,7 +7,7 @@ if type "pyenv" > /dev/null; then
 fi
 
 # Poetry settings
-if type "poetry" > /dev/null; then
+if type "$HOME/.poetry/bin/poetry" > /dev/null; then
     export PATH="$HOME/.poetry/bin:$PATH"
 fi
 
