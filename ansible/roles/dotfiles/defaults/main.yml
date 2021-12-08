@@ -1,1 +1,2 @@
-dotfiles_dir: ~/.dotfiles
+dotfiles_dir: "{{ ansible_user_dir }}/.dotfiles"
+osx_script: "{{ dotfiles_dir }}/profile/.osx"

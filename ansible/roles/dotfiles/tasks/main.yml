@@ -46,4 +46,7 @@
     path: ~/.gitconfig.local
     block: "{{ lookup('template', 'gitconfig.local') }}"
     create: true
-      
+
+- name: Run .osx dotfile.
+  command: "{{ osx_script }}"
+  changed_when: false
