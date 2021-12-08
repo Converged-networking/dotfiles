@@ -47,6 +47,9 @@ defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 #   systemsetup -setrestartfreeze on
 # fi
 
+# Use keyboard navigation to move focus between controls
+defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+
 ###############################################################################
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
 ###############################################################################
@@ -70,6 +73,12 @@ defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 
 # # Disable auto-correct
 # defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+
+# Add keyboard shortcuts to manage windows
+defaults write -g NSUserKeyEquivalents -dict-add "Move Window to Left Side of Screen" "@^l"
+defaults write -g NSUserKeyEquivalents -dict-add "Move Window to Right Side of Screen" "@^r"
+defaults write -g NSUserKeyEquivalents -dict-add "Tile Window to Left of Screen" "@^\U2190"
+defaults write -g NSUserKeyEquivalents -dict-add "Tile Window to Right of Screen" "@^\U2192"
 
 ###############################################################################
 # Screen                                                                      #
