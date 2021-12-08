@@ -1,0 +1,7 @@
+---
+roles:
+  - name: elliotweiser.osx-command-line-tools
+  - src: https://github.com/lwalley/ansible-role-iterm2
+
+collections:
+  - name: geerlingguy.mac

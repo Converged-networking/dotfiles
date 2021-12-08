@@ -1,0 +1,81 @@
+---
+all:
+  hosts:
+    localhost:
+      # Set to 'true' to configure the Dock via dockutil.
+      configure_dock: true
+      dockitems_remove: []
+      # - Launchpad
+      # - TV
+      # - Podcasts
+      # - 'App Store'
+      dockitems_persist: 
+        - name: Brave Browser
+          path: /Applications/Brave Browser.app/
+          pos: 4
+        - name: Visual Studio Code
+          path: /Applications/Visual Studio Code.app/
+          pos: 5
+        - name: iTerm
+          path: /Applications/iTerm.app/
+          pos: 6
+
+      homebrew_installed_packages:
+        - ipcalc
+        - rclone
+        - mas
+        - jq
+      homebrew_cask_apps:
+        - discord
+        - slack
+        - google-chrome
+        - brave-browser
+        - iterm2
+        - keepassxc
+        - qlcolorcode
+        - qlimagesize
+        - qlmarkdown
+        - qlstephen
+        - qlvideo
+        - quicklook-json
+        - suspicious-package
+        - visual-studio-code
+        - spotify
+        - nvidia-geforce-now
+
+      # See `geerlingguy.mas` role documentation for usage instructions.
+      mas_installed_apps:
+        - { id: 1333542190, name: "1Password 7" }
+        - { id: 1295203466, name: "Microsoft Remote Desktop" }
+        - { id: 931571202, name: "QuickShade" }
+      mas_email: "marvin@kuurstra.com"
+      mas_signin_dialog: true
+
+
+      iterm2_fonts:
+        - url: https://github.com/powerline/fonts/blob/master/SourceCodePro/Source%20Code%20Pro%20Black%20for%20Powerline.otf?raw=true
+        - url: https://github.com/powerline/fonts/blob/master/SourceCodePro/Source%20Code%20Pro%20Bold%20for%20Powerline.otf?raw=true
+        - url: https://github.com/powerline/fonts/blob/master/SourceCodePro/Source%20Code%20Pro%20ExtraLight%20for%20Powerline.otf?raw=true
+        - url: https://github.com/powerline/fonts/blob/master/SourceCodePro/Source%20Code%20Pro%20Light%20for%20Powerline.otf?raw=true
+        - url: https://github.com/powerline/fonts/blob/master/SourceCodePro/Source%20Code%20Pro%20Medium%20for%20Powerline.otf?raw=true
+        - url: https://github.com/powerline/fonts/blob/master/SourceCodePro/Source%20Code%20Pro%20Powerline%20BlackItalic.otf?raw=true
+        - url: https://github.com/powerline/fonts/blob/master/SourceCodePro/Source%20Code%20Pro%20Powerline%20BoldItalic.otf?raw=true
+        - url: https://github.com/powerline/fonts/blob/master/SourceCodePro/Source%20Code%20Pro%20Powerline%20ExtraLightItalic.otf?raw=true
+        - url: https://github.com/powerline/fonts/blob/master/SourceCodePro/Source%20Code%20Pro%20Powerline%20Italic.otf?raw=true
+        - url: https://github.com/powerline/fonts/blob/master/SourceCodePro/Source%20Code%20Pro%20Powerline%20LightItalic.otf?raw=true
+        - url: https://github.com/powerline/fonts/blob/master/SourceCodePro/Source%20Code%20Pro%20Powerline%20MediumItalic.otf?raw=true
+        - url: https://github.com/powerline/fonts/blob/master/SourceCodePro/Source%20Code%20Pro%20Powerline%20SemiboldItalic.otf?raw=true
+        - url: https://github.com/powerline/fonts/blob/master/SourceCodePro/Source%20Code%20Pro%20Semibold%20for%20Powerline.otf?raw=true
+        - url: https://github.com/powerline/fonts/blob/master/SourceCodePro/Source%20Code%20Pro%20for%20Powerline.otf?raw=true
+      # iterm2_dynamic_profiles_local:
+      #   - ~/.dotfiles/iTerm2/Profiles.json
+      iterm2_preferences_custom_folder: ~/.dotfiles/iTerm2/Preferences
+      # If loading preferences from a custom folder your default profile GUID
+      # will likely already be set, so you can skip adding the profile GUID.
+      # iterm2_default_profile_guid: 7C4F5987-13EA-4F09-B520-A21A6D988F08
+      iterm2_shell_integration: yes
+
+
+
+  vars:
+    ansible_connection: local

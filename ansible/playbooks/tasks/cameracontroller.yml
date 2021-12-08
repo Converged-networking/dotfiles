@@ -1,0 +1,30 @@
+---
+- name: set facts
+  ansible.builtin.set_fact:
+    apps_dir: /Applications
+    cc_app_dir: /Applications/CameraController.app
+    cc_download_url: https://github.com/Itaybre/CameraController/releases/download/1.3.1/CameraController.zip
+    tmp_file: /tmp/CameraController.zip
+
+- name: Lookup
+  ansible.builtin.stat:
+    path: "{{ cc_app_dir }}"
+  register: stat_cc
+
+- name: Install Camera controller
+  when: stat_cc.stat.isdir is not defined 
+  block:
+  - name: Download Camera controller
+    get_url:
+      url: "{{ cc_download_url }}"
+      dest: "{{ tmp_file }}"
+
+  - name: Install Camera controller
+    ansible.builtin.unarchive:
+      src: "{{ tmp_file }}"
+      dest: "{{ apps_dir }}"
+
+  - name: Delete downloaded archive
+    ansible.builtin.file:
+      path: "{{ tmp_file }}"
+      state: absent

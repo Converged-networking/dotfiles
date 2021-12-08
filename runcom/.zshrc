@@ -44,3 +44,5 @@ export DOTFILES_DIR DOTFILES_EXTRA_DIR
 # Update dotfiles on new shell
 (cd ~/.dotfiles && git pull)
 
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
