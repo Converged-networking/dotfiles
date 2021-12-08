@@ -1,1 +1,49 @@
 ---
+
+- name: set facts
+  ansible.builtin.set_fact:
+    omz_app_dir: ~/.oh-my-zsh
+    omz_download_url: https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+    tmp_file: /tmp/omz_install.sh
+
+- name: Check if Oh my ZSH is installed
+  ansible.builtin.stat:
+    path: "{{ omz_app_dir }}"
+  register: stat_omz
+
+- when: stat_omz.stat.isdir is not defined 
+  block:
+  - name: "Install oh my zsh : Download install script"
+    get_url:
+      url: "{{ omz_download_url }}"
+      dest: "{{ tmp_file }}"
+      mode: 0755
+
+  - name: "Install oh my zsh : Run install script"
+    ansible.builtin.command: "sh -c '{{ tmp_file }}'"
+
+  - name: "Install oh my zsh : Remove install script"
+    ansible.builtin.file:
+      path: "{{ tmp_file }}"
+      state: absent
+
+- name: Create symbolic links
+  ansible.builtin.file:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    state: link
+    force: true
+  loop:
+    - { src: "{{ dotfiles_dir }}/runcom/.zprofile", dest: "~/.zprofile"}
+    - { src: "{{ dotfiles_dir }}/runcom/.zshrc", dest: "~/.zshrc"}
+    - { src: "{{ dotfiles_dir }}/git/.gitconfig", dest: "~/.gitconfig"}
+
+- name: Create local git config
+  vars:
+    is_wsl: false
+    is_macos: true
+  ansible.builtin.blockinfile:
+    path: ~/.gitconfig.local
+    block: "{{ lookup('template', 'gitconfig.local') }}"
+    create: true
+      

@@ -4,17 +4,27 @@ all:
     localhost:
       # Set to 'true' to configure the Dock via dockutil.
       configure_dock: true
-      dockitems_remove: []
-      # - Launchpad
-      # - TV
-      # - Podcasts
-      # - 'App Store'
+      dockitems_remove: 
+        - Safari
+        - Messages
+        - Mail
+        - Maps
+        - Photos
+        - FaceTime
+        - Calendar
+        - Contacts
+        - Reminders
+        - Notes
+        - TV
+        - Music
+        - Podcasts
+        - App Store
       dockitems_persist: 
         - name: Brave Browser
-          path: /Applications/Brave Browser.app/
+          path: /Applications/Cask/Brave Browser.app
           pos: 4
         - name: Visual Studio Code
-          path: /Applications/Visual Studio Code.app/
+          path: /Applications/Cask/Visual Studio Code.app
           pos: 5
         - name: iTerm
           path: /Applications/iTerm.app/
@@ -25,12 +35,13 @@ all:
         - rclone
         - mas
         - jq
+      homebrew_cask_appdir: /Applications/Cask
       homebrew_cask_apps:
         - discord
         - slack
         - google-chrome
         - brave-browser
-        - iterm2
+        - { name: iterm2, install_options: "appdir=/Applications" }
         - keepassxc
         - qlcolorcode
         - qlimagesize
