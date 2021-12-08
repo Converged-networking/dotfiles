@@ -20,3 +20,10 @@
   tasks:
     - import_tasks: tasks/cameracontroller.yml
       tags: ['cameracontroller']
+    - command: "xattr -rd com.apple.quarantine '{{ item }}'"
+      become: true
+      tags: ['qlFix']
+      loop:
+        - "{{ ansible_user_dir }}/Library/QuickLook/QLStephen.qlgenerator"
+        - "{{ ansible_user_dir }}/Library/QuickLook/QLColorCode.qlgenerator"
+        - "/Applications/Cask/QLMarkdown.app"
