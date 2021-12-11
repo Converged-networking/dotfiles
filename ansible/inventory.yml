@@ -53,6 +53,7 @@ all:
         - visual-studio-code
         - spotify
         - nvidia-geforce-now
+        - docker
 
       # See `geerlingguy.mas` role documentation for usage instructions.
       mas_installed_apps:

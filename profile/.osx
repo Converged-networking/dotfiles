@@ -84,8 +84,8 @@ defaults write -g NSUserKeyEquivalents -dict-add "Tile Window to Right of Screen
 # Screen                                                                      #
 ###############################################################################
 
-# Save screenshots to Downloads folder.
-defaults write com.apple.screencapture location -string "${HOME}/Downloads"
+# # Save screenshots to Downloads folder.
+# defaults write com.apple.screencapture location -string "${HOME}/Downloads"
 
 # Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
 defaults write com.apple.screencapture type -string "png"
@@ -97,10 +97,10 @@ defaults write com.apple.screencapture type -string "png"
 # Finder                                                                      #
 ###############################################################################
 
-# # Set Desktop as the default location for new Finder windows
-# # For other paths, use `PfLo` and `file:///full/path/here/`
-# defaults write com.apple.finder NewWindowTarget -string "PfDe"
-# defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/Desktop/"
+# Set home folder as the default location for new Finder windows
+# For other paths, use `PfLo` and `file:///full/path/here/`
+defaults write com.apple.finder NewWindowTarget -string "PfHm"
+defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/"
 
 # # Show icons for hard drives, servers, and removable media on the desktop
 # defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
@@ -126,14 +126,20 @@ defaults write com.apple.finder _FXSortFoldersFirst -bool true
 # Finder: allow text selection in Quick Look
 defaults write com.apple.finder QLEnableTextSelection -bool true
 
+# Finder: Remove the delay when hovering the toolbar title
+defaults write NSGlobalDomain "NSToolbarTitleViewRolloverDelay" -float "0"
+
+# Finder: Set sidebar icon size to small
+defaults write NSGlobalDomain "NSTableViewDefaultSizeMode" -int "1"
+
 # # Display full POSIX path as Finder window title
 # defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 
 # When performing a search, search the current folder by default
 defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 
-# Disable the warning when changing a file extension
-defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+# # Disable the warning when changing a file extension
+# defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
 # Remove the spring loading delay for directories
 defaults write NSGlobalDomain com.apple.springing.delay -float 0.1
