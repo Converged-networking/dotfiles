@@ -47,6 +47,12 @@
     block: "{{ lookup('template', 'gitconfig.local') }}"
     create: true
 
+- name: Create ssh config
+  ansible.builtin.blockinfile:
+    path: ~/.ssh/config
+    block: "{{ lookup('file', 'ssh_config') }}"
+    create: true
+
 - name: Run .osx dotfile.
   command: "{{ osx_script }}"
   changed_when: false

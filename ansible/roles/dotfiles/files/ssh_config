@@ -1,0 +1,48 @@
+# SSH config file
+
+## Home servers
+
+Host s-dev01
+    HostName fire.kuurstra.com
+    Port 22220
+    DynamicForward 8083
+    ForwardAgent yes
+
+Host s-pi01
+    HostName fire.kuurstra.com
+    Port 22221
+    DynamicForward 8084
+    ForwardAgent yes
+
+Host s-ha01
+    HostName 192.168.2.222
+
+Host s-run01 s-mon01 s-box01 s-bup01
+    ProxyJump s-dev01
+
+Host s-dbs01
+    ProxyJump s-run01
+
+## Work
+
+Host v-netjump001
+    HostName v-netjump001.directory.intra
+    User kuurstra
+    DynamicForward 8082
+    ForwardAgent yes
+
+Host *
+    User marvink
+
+    # Use SSH agent
+    IgnoreUnknown UseKeychain
+    UseKeychain yes
+
+    # Keep connections alive
+    TCPKeepAlive yes
+    ServerAliveInterval 30
+    ServerAliveCountMax 5
+
+    # Connection multiplexing
+    ControlMaster auto
+    ControlPath ~/.ssh/%r@%h:%p
