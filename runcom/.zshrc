@@ -12,7 +12,7 @@ fi
 # Make utilities available
 export PATH="$DOTFILES_DIR/bin:$PATH"
 
-for DOTFILE in "$DOTFILES_DIR"/profile/.{function,env,alias,app_*,custom}; do
+for DOTFILE in "$DOTFILES_DIR"/profile/.{function,env,alias,app_*,custom}.shell; do
   [ -f "$DOTFILE" ] && . "$DOTFILE"
 done
 
