@@ -12,15 +12,10 @@ fi
 # Make utilities available
 export PATH="$DOTFILES_DIR/bin:$PATH"
 
-for DOTFILE in "$DOTFILES_DIR"/profile/.{function,env,alias,app_*,custom}.shell; do
-  [ -f "$DOTFILE" ] && . "$DOTFILE"
+for DOTFILE in "$DOTFILES_DIR"/profile/{env_*,function,alias_*,app_*}*; do
+  [[ $DOTFILE == *sh ]] && . "$DOTFILE"
+  [[ $DOTFILE == *macos ]] && [ is-macos ] && . "$DOTFILE"
 done
-
-if is-macos; then
-  for DOTFILE in "$DOTFILES_DIR"/profile/.{function,env,alias,app_*,custom}.macos; do
-    [ -f "$DOTFILE" ] && . "$DOTFILE"
-  done
-fi
 
 # Special for netjump
 if [ "$HOST" = "v-netjump001.directory.intra" ]; then

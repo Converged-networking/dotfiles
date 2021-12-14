@@ -35,6 +35,7 @@ all:
         - rclone
         - mas
         - jq
+        - pipx
       homebrew_cask_appdir: /Applications/Cask
       homebrew_cask_apps:
         - discord
