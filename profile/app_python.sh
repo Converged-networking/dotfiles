@@ -6,7 +6,9 @@ if type "pyenv" > /dev/null; then
 fi
 
 # Poetry settings
-if type "$HOME/.poetry/bin/poetry" > /dev/null; then
+if type "poetry" > /dev/null; then
+    poetry config virtualenvs.in-project true
+elif type "$HOME/.poetry/bin/poetry" > /dev/null; then
     export PATH="$HOME/.poetry/bin:$PATH"
     poetry config virtualenvs.in-project true
 fi
