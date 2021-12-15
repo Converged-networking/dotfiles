@@ -41,6 +41,14 @@ Host v-netdev001
     User adm_kuurstra
     ProxyJump v-netjump003
 
+Host v-netfile001
+    User adm_kuurstra
+    ProxyJump v-netjump003
+
+Host v-netlog001
+    User adm_kuurstra
+    ProxyJump v-netjump003
+
 Host *
     User marvink
 
