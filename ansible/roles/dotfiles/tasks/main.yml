@@ -40,9 +40,6 @@
     - { src: "{{ dotfiles_dir }}/apps/ssh/config", dest: "~/.ssh/config"}
 
 - name: Create local git config
-  vars:
-    is_wsl: false
-    is_macos: true
   ansible.builtin.blockinfile:
     path: ~/.gitconfig.local
     block: "{{ lookup('template', 'gitconfig.local') }}"

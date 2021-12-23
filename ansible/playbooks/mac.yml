@@ -2,26 +2,44 @@
 - hosts: localhost
   gather_facts: true
 
+
+  vars:
+    is_macos: true
+
+
   roles:
     - role: elliotweiser.osx-command-line-tools
+      when: is_macos is defined and is_macos
+
     - role: geerlingguy.mac.homebrew
+      when: is_macos is defined and is_macos
       tags: ['homebrew']
+
     - role: dotfiles
       tags: ['dotfiles']
+
     - role: geerlingguy.mac.mas
-      when: mas_installed_apps or mas_installed_app_ids
+      when: is_macos is defined and is_macos
       tags: ['mas']
+
     - role: geerlingguy.mac.dock
-      when: configure_dock
+      when: is_macos is defined and is_macos and configure_dock
       tags: ['dock']
+
     - role: ansible-role-iterm2
+      when: is_macos is defined and is_macos
       tags: ['iterm2']
+
 
   tasks:
     - import_tasks: tasks/cameracontroller.yml
+      when: is_macos is defined and is_macos
       tags: ['cameracontroller']
-    - command: "xattr -rd com.apple.quarantine '{{ item }}'"
+
+    - name: Fix permissions for QuickLook plugins
       become: true
+      command: "xattr -rd com.apple.quarantine '{{ item }}'"
+      when: is_macos is defined and is_macos
       tags: ['qlFix']
       loop:
         - "{{ ansible_user_dir }}/Library/QuickLook/QLStephen.qlgenerator"
