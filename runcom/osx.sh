@@ -123,6 +123,9 @@ defaults write com.apple.finder ShowPathbar -bool true
 # Finder: Keep folders on top when sorting by name
 defaults write com.apple.finder _FXSortFoldersFirst -bool true
 
+# Finder default sort by name
+defaults write com.apple.Finder FXPreferredGroupBy Name
+
 # Finder: allow text selection in Quick Look
 defaults write com.apple.finder QLEnableTextSelection -bool true
 
