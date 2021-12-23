@@ -1,10 +1,10 @@
 [include]
-  path = ~/.dotfiles/git/.gitconfig.prive
+  path = ~/.dotfiles/apps/git/gitconfig.prive
 {% if is_wsl %}
   # Include config for WSL
-  path = ~/.dotfiles/git/.gitconfig.wsl
+  path = ~/.dotfiles/apps/git/gitconfig.wsl
 {% endif %}
 {% if is_macos %}
   # Include config for MacOS
-  path = ~/.dotfiles/git/.gitconfig.macos
+  path = ~/.dotfiles/apps/git/gitconfig.macos
 {% endif %}

@@ -1,26 +1,11 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-# Assuming ~/.dotfiles
-if [ -d "$HOME/.dotfiles" ]; then
-  DOTFILES_DIR="$HOME/.dotfiles"
-else
-  echo "Unable to find dotfiles, exiting."
-  return
-fi
-
-# Make utilities available
-export PATH="$DOTFILES_DIR/bin:$PATH"
-
-for DOTFILE in "$DOTFILES_DIR"/profile/{env_*,function,alias_*,app_*}*; do
+# Stub
+for DOTFILE in "$DOTFILES_DIR"/profile/app_*; do
   [[ $DOTFILE == *sh ]] && . "$DOTFILE"
   [[ $DOTFILE == *macos ]] && [ is-macos ] && . "$DOTFILE"
 done
-
-# Special for netjump
-if [ "$HOST" = "v-netjump001.directory.intra" ]; then
-  . "${DOTFILES_DIR}/profile/.special_netjump"
-fi
 
 # Hook for extra/custom stuff
 DOTFILES_EXTRA_DIR="$HOME/.extra"
@@ -31,13 +16,12 @@ if [ -d "$DOTFILES_EXTRA_DIR" ]; then
 fi
 
 # Clean up
-unset READLINK CURRENT_SCRIPT SCRIPT_PATH DOTFILE EXTRAFILE
+unset DOTFILE EXTRAFILE
 
 # Export
-export DOTFILES_DIR DOTFILES_EXTRA_DIR
+export DOTFILES_EXTRA_DIR
 
 # Update dotfiles on new shell
 (cd ~/.dotfiles && git pull)
-
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

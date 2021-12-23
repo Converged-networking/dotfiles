@@ -34,9 +34,10 @@
     state: link
     force: true
   loop:
-    - { src: "{{ dotfiles_dir }}/runcom/.zprofile", dest: "~/.zprofile"}
-    - { src: "{{ dotfiles_dir }}/runcom/.zshrc", dest: "~/.zshrc"}
-    - { src: "{{ dotfiles_dir }}/git/.gitconfig", dest: "~/.gitconfig"}
+    - { src: "{{ dotfiles_dir }}/profile/zprofile", dest: "~/.zprofile"}
+    - { src: "{{ dotfiles_dir }}/profile/zshrc", dest: "~/.zshrc"}
+    - { src: "{{ dotfiles_dir }}/apps/git/gitconfig", dest: "~/.gitconfig"}
+    - { src: "{{ dotfiles_dir }}/apps/ssh/config", dest: "~/.ssh/config"}
 
 - name: Create local git config
   vars:
@@ -47,11 +48,10 @@
     block: "{{ lookup('template', 'gitconfig.local') }}"
     create: true
 
-- name: Create ssh config
-  ansible.builtin.blockinfile:
-    path: ~/.ssh/config
-    block: "{{ lookup('file', 'ssh_config') }}"
-    create: true
+- name: Create local ssh config
+  ansible.builtin.file:
+    path: ~/.ssh/config.local
+    state: file
 
 - name: Run .osx dotfile.
   command: "{{ osx_script }}"

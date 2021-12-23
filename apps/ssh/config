@@ -49,6 +49,28 @@ Host v-netlog001
     User adm_kuurstra
     ProxyJump v-netjump003
 
+Host v-netdb001
+    User adm_kuurstra
+    ProxyJump v-netjump003
+
+Host v-netmon001
+    User adm_kuurstra
+    ProxyJump v-netjump003
+
+Host v-jen006
+    User adm_kuurstra
+    ProxyJump v-netjump003
+
+## Containerlab
+
+Host clab*
+    UserKnownHostsFile /dev/null
+    GlobalKnownHostsFile /dev/null
+    StrictHostKeyChecking no
+    User admin
+
+## Global config
+
 Host *
     User marvink
 
@@ -64,3 +86,5 @@ Host *
     # # Connection multiplexing
     # ControlMaster auto
     # ControlPath ~/.ssh/%r@%h:%p
+
+Include ~/.ssh/config.local

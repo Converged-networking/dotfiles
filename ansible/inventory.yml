@@ -82,7 +82,7 @@ all:
         - url: https://github.com/powerline/fonts/blob/master/SourceCodePro/Source%20Code%20Pro%20for%20Powerline.otf?raw=true
       # iterm2_dynamic_profiles_local:
       #   - ~/.dotfiles/iTerm2/Profiles.json
-      iterm2_preferences_custom_folder: ~/.dotfiles/iTerm2/Preferences
+      iterm2_preferences_custom_folder: ~/.dotfiles/apps/iTerm2/Preferences
       # If loading preferences from a custom folder your default profile GUID
       # will likely already be set, so you can skip adding the profile GUID.
       # iterm2_default_profile_guid: 7C4F5987-13EA-4F09-B520-A21A6D988F08

@@ -1,6 +1,5 @@
 .DS_Store
 
-profile/.custom
 ansible/collections/*
 
 ansible/roles/*

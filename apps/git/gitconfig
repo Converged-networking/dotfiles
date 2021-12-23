@@ -1,3 +1,5 @@
+[init]
+	defaultBranch = main
 [pull]
 	rebase = false
 [push]
@@ -17,5 +19,3 @@
 # means Ubuntu 14.04+) -- this needs to be the last thing in this file!
 [include]
 	path = ~/.gitconfig.local
-[init]
-	defaultBranch = main
