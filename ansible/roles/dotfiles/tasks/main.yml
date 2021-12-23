@@ -46,10 +46,14 @@
     create: true
 
 - name: Create local ssh config
-  ansible.builtin.file:
-    path: ~/.ssh/config.local
-    state: file
+  copy:
+    content: ""
+    dest: ~/.ssh/config.local
+    # Only create if it doesn't exist
+    force: no
+    mode: 0644
 
 - name: Run .osx dotfile.
   command: "{{ osx_script }}"
   changed_when: false
+  when: is_macos is defined and is_macos|bool

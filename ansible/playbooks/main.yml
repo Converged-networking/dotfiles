@@ -3,43 +3,47 @@
   gather_facts: true
 
 
-  vars:
-    is_macos: true
-
+  vars_prompt:
+  - name: is_macos
+    prompt: Is this Mac OS?[True/False]
+    private: no
+  - name: is_wsl
+    prompt: Is this WSL?[True/False]
+    private: no
 
   roles:
     - role: elliotweiser.osx-command-line-tools
-      when: is_macos is defined and is_macos
+      when: is_macos is defined and is_macos|bool
 
     - role: geerlingguy.mac.homebrew
-      when: is_macos is defined and is_macos
+      when: is_macos is defined and is_macos|bool
       tags: ['homebrew']
 
     - role: dotfiles
       tags: ['dotfiles']
 
     - role: geerlingguy.mac.mas
-      when: is_macos is defined and is_macos
+      when: is_macos is defined and is_macos|bool
       tags: ['mas']
 
     - role: geerlingguy.mac.dock
-      when: is_macos is defined and is_macos and configure_dock
+      when: is_macos is defined and is_macos|bool and configure_dock
       tags: ['dock']
 
     - role: ansible-role-iterm2
-      when: is_macos is defined and is_macos
+      when: is_macos is defined and is_macos|bool
       tags: ['iterm2']
 
 
   tasks:
     - import_tasks: tasks/cameracontroller.yml
-      when: is_macos is defined and is_macos
+      when: is_macos is defined and is_macos|bool
       tags: ['cameracontroller']
 
     - name: Fix permissions for QuickLook plugins
       become: true
       command: "xattr -rd com.apple.quarantine '{{ item }}'"
-      when: is_macos is defined and is_macos
+      when: is_macos is defined and is_macos|bool
       tags: ['qlFix']
       loop:
         - "{{ ansible_user_dir }}/Library/QuickLook/QLStephen.qlgenerator"
