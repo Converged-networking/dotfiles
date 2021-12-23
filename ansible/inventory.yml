@@ -36,6 +36,7 @@ all:
         - mas
         - jq
         - pipx
+        - python3
       homebrew_cask_appdir: /Applications/Cask
       homebrew_cask_apps:
         - discord
