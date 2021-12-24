@@ -6,6 +6,7 @@
   default = current
 [core]
   editor = code --wait
+  pager = less -F -X
 [diff]
   tool = vscode
 [difftool "vscode"]
