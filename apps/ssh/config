@@ -77,8 +77,9 @@ Host *
     User marvink
 
     # Use SSH agent
-    IgnoreUnknown UseKeychain
+    IgnoreUnknown UseKeychain,AddKeysToAgent
     UseKeychain yes
+    AddKeysToAgent yes
 
     # Keep connections alive
     TCPKeepAlive yes
