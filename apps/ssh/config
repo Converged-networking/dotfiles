@@ -27,39 +27,18 @@ Host s-dbs01
 
 ## Work
 
-Host v-netjump001
-    HostName v-netjump001.directory.intra
-    User kuurstra
-    DynamicForward 8082
-    ForwardAgent yes
-
-Host v-netjump003
+Match exec "[[ '%u' == 'marvink' ]]" Host v-netjump003
     HostName v-netjump003.directory.intra
     User adm_kuurstra
     DynamicForward 8082
     ForwardAgent yes
 
-Host v-netdev001
+Match exec "[[ '%u' == 'marvink' ]]"  Host v-netdev001
     User adm_kuurstra
     ProxyJump v-netjump003
+    ForwardAgent yes
 
-Host v-netfile001
-    User adm_kuurstra
-    ProxyJump v-netjump003
-
-Host v-netlog001
-    User adm_kuurstra
-    ProxyJump v-netjump003
-
-Host v-netdb001
-    User adm_kuurstra
-    ProxyJump v-netjump003
-
-Host v-netmon001
-    User adm_kuurstra
-    ProxyJump v-netjump003
-
-Host v-jen006
+Match exec "[[ '%u' == 'marvink' ]]" Host v-netfile001,v-netlog001,v-netdb001,v-netmon001,v-jen006,c-itdev*
     User adm_kuurstra
     ProxyJump v-netjump003
 
@@ -74,8 +53,6 @@ Host clab*
 ## Global config
 
 Host *
-    User marvink
-
     # Use SSH agent
     IgnoreUnknown UseKeychain,AddKeysToAgent
     UseKeychain yes
@@ -89,4 +66,3 @@ Host *
     # # Connection multiplexing
     # ControlMaster auto
     # ControlPath ~/.ssh/%r@%h:%p
-
