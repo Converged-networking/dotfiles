@@ -1,0 +1,10 @@
+{
+  "Profiles": [
+    {
+      "Name": "Console Cisco",
+      "Guid": "Console Cisco",
+      "Dynamic Profile Parent Name": "Console",
+      "Command" : "screen \/dev\/cu.usbserial-2130 9600 8n1"
+    }
+  ]
+}
