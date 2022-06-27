@@ -1,0 +1,12 @@
+{
+    "Profiles": [
+      {
+        "Name": "v-netfile001",
+        "Guid": "v-netfile001",
+        "Dynamic Profile Parent Name": "v-netjump003",
+        "Log Directory" : "\/Users\/marvink\/OneDrive - Stichting Deltares\/var\/logging\/iterm\/v-netfile001",
+        "Command" : "ssh v-netfile001",
+        "Initial Text" : "cd \/srv\/data\/; ls"
+      }
+    ]
+  }

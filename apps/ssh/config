@@ -27,6 +27,11 @@ Host s-dbs01
 
 ## Work
 
+Host lnms
+    User librenms
+    ProxyJump v-netjump003
+    HostName v-netmon001
+
 Match exec "[[ '%u' == 'marvink' ]]" Host v-netjump003
     HostName v-netjump003.directory.intra
     User adm_kuurstra
